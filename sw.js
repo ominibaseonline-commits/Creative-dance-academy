@@ -1,8 +1,5 @@
-const CACHE_NAME = 'ominibase-cms-v1';
-const urlsToCache = [
-  '/',
-  '/index.html'
-];
+const CACHE_NAME = 'ominibase-cms-v2';
+const urlsToCache = ['./', './index.html'];
 
 self.addEventListener('install', event => {
   event.waitUntil(
@@ -23,7 +20,7 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   event.respondWith(
     fetch(event.request).catch(() =>
-      caches.match(event.request).then(r => r || caches.match('/index.html'))
+      caches.match(event.request).then(r => r || caches.match('./index.html'))
     )
   );
 });
